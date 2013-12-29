@@ -65,7 +65,8 @@ then
 	echo -e "${bldblu}Copying ace manifest syncing new sources"
 	cp $WORKSPACE/local_manifests/ace_manifest.xml .repo/local_manifests/device.xml
 	repo sync -j"$THREADS"
-elif
+elif ["$DEVICE" == "bravo"]
+then
 	echo -e "${bldblu}Copying bravo manifest and syncing new sources"
 	cp $WORKSPACE/local_manifests/bravo_manifest.xml .repo/local_manifests/device.xml
 	repo sync -j"$THREADS"
