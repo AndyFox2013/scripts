@@ -77,6 +77,11 @@ echo -e ""
 echo -e "${bldblu}Brunching device ${txtrst}"
 brunch $DEVICE;
 
+echo -e "Copying build to upload folder" 
+cp $WORKSPACE/out/target/product/$DEVICE/*.zip ~/OUT/CyanDream_Builds/$DEVICE
+
 # finished? get elapsed time
 res2=$(date +%s.%N)
 echo "${bldgrn}Total time elapsed: ${txtrst}${grn}$(echo "($res2 - $res1) / 60"|bc ) minutes ($(echo "$res2 - $res1"|bc ) seconds) ${txtrst}"
+
+
