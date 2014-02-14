@@ -52,7 +52,8 @@ chmod a+x ~/bin/repo
 echo -e "${cya}Updating bashrc${txtrst}"
 echo " "
 
-$BASHCODE > ~/.bashrc
+#$BASHCODE > ~/.bashrc
+export PATH=${PATH}:~/bin
 
 echo -e "${cya} Creating CyanDream folder${txtrst}"
 echo " "
