@@ -36,12 +36,14 @@ clear
 echo -e "${cya}Building ${bldcya}CyanDream v$VERSION ${txtrst}";
 
 # delete roomservice.xml and local manifests before sync
-rm -f $DIR/.repo/local_manifests
-echo -e "$(bldgreen)Local manifests deleted(txtrst)"
+rm -rf $DIR/.repo/local_manifest/roomservice.xml
+echo -e "Local manifests deleted"
 
 # sync with latest sources
 echo -e ""
-if [ "$SYNC" == "true" ]
+echo -e "Run a repo sync? (y/n)"
+read SYNCSELECT
+if [ SYNCSELECT  == y ]
 then
    echo -e "${bldblu}Fetching latest sources ${txtrst}"
    repo sync -j"$THREADS"
