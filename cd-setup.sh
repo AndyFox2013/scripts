@@ -75,7 +75,6 @@ sleep 5
 echo -e "${cya}Grabbing the build file${txtrst}"
 echo " "
 curl -O https://raw.github.com/AndyFox2013/scripts/master/build.sh
-<<<<<<< HEAD
 chmod a+x build.sh
 sleep 5
 
@@ -96,9 +95,9 @@ read SYNC
 	fi
 	
 echo -e "${cya} use './build.sh' to sync and compile${txtrst}"
-=======
+
 
 echo -e "${red}Running repo sync${txtrst}"
 
 repo sync -j4
->>>>>>> 47afea2dbd95cc73019d71070fc91a6106950918
+
