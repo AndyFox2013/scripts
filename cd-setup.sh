@@ -90,14 +90,11 @@ read SYNC
 		
 	elif [ $SYNC  ==  n ] ; then
 		echo -e "${red} Not syncing now${txtrst}"
-		sleep 5
+		sleep 2
 		
 	fi
 	
 echo -e "${cya} use './build.sh' to sync and compile${txtrst}"
 
 
-echo -e "${red}Running repo sync${txtrst}"
-
-repo sync -j4
 
