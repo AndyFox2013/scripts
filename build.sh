@@ -65,12 +65,12 @@ export CM_RELEASE=true
 if ["$DEVICE" == "ace"]
 then
 	echo -e "${bldblu}Copying ace manifest syncing new sources"
-	cp $WORKSPACE/local_manifests/ace_manifest.xml .repo/local_manifests/device.xml
+	cp $DIR/local_manifests/ace_manifest.xml .repo/local_manifests/device.xml
 	repo sync -j"$THREADS"
 elif ["$DEVICE" == "bravo"]
 then
 	echo -e "${bldblu}Copying bravo manifest and syncing new sources"
-	cp $WORKSPACE/local_manifests/bravo_manifest.xml .repo/local_manifests/device.xml
+	cp $DIR/local_manifests/bravo_manifest.xml .repo/local_manifests/device.xml
 	repo sync -j"$THREADS"
 fi
 
@@ -80,7 +80,7 @@ echo -e "${bldblu}Brunching device ${txtrst}"
 brunch $DEVICE;
 
 echo -e "Copying build to upload folder" 
-cp $WORKSPACE/out/target/product/$DEVICE/*.zip ~/OUT/CyanDream_Builds/$DEVICE
+cp $DIR/out/target/product/$DEVICE/CyanDream-*.zip ~/OUT/CyanDream_Builds/$DEVICE
 
 # finished? get elapsed time
 res2=$(date +%s.%N)
