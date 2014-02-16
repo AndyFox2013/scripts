@@ -95,6 +95,7 @@ read SYNC
 	fi
 	
 echo -e "${cya} use './build.sh' to sync and compile${txtrst}"
+cd cyandream/system
 
 
 
