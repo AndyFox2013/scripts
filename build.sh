@@ -17,6 +17,7 @@ bldcya=${txtbld}$(tput setaf 6) #  cyan
 txtrst=$(tput sgr0)             # Reset
 
 THREADS="16"
+CORES=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || sysctl -n hw.ncpu)
 DEVICE="$1"
 SYNC="$2"
 
@@ -46,7 +47,7 @@ read SYNCSELECT
 if [ SYNCSELECT  == y ]
 then
    echo -e "${bldblu}Fetching latest sources ${txtrst}"
-   repo sync -j"$THREADS"
+   repo sync -j"$CORES"
    echo -e ""
 fi
 
@@ -66,12 +67,12 @@ if ["$DEVICE" == "ace"]
 then
 	echo -e "${bldblu}Copying ace manifest syncing new sources"
 	cp $DIR/local_manifests/ace_manifest.xml .repo/local_manifests/device.xml
-	repo sync -j"$THREADS"
+	repo sync -j"$CORES"
 elif ["$DEVICE" == "bravo"]
 then
 	echo -e "${bldblu}Copying bravo manifest and syncing new sources"
 	cp $DIR/local_manifests/bravo_manifest.xml .repo/local_manifests/device.xml
-	repo sync -j"$THREADS"
+	repo sync -j"$CORES"
 fi
 
 # brunch device
