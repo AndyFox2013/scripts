@@ -30,14 +30,17 @@ echo -e "Installing packages required to compile"
 echo -e "${red}Please enter password when prompted${txtrst}"
 echo " "
 
-sudo apt-get install git-core gnupg flex bison gperf libsdl1.2-dev libesd0-dev libwxgtk2.8-dev squashfs-tools build-essential zip curl libncurses5-dev zlib1g-dev openjdk-6-jre openjdk-6-jdk pngcrush schedtool
+sudo apt-get -y install git-core gnupg flex bison gperf libsdl1.2-dev libesd0-dev libwxgtk2.8-dev squashfs-tools build-essential zip curl libncurses5-dev zlib1g-dev openjdk-6-jre openjdk-6-jdk pngcrush schedtool
 sleep 5
 
-echo -e "Installing 64bit only packages"
-echo " "
+export arch=`uname -i`
+if [ $arch = "x86_64" ];then
+  echo -e "Installing 64bit only packages"
+  echo " "
 
-sudo apt-get install g++-multilib lib32z1-dev lib32ncurses5-dev lib32readline-gplv2-dev gcc-4.7-multilib g++-4.5-multilib
-sleep 5
+  sudo apt-get -y install g++-multilib lib32z1-dev lib32ncurses5-dev lib32readline-gplv2-dev gcc-4.7-multilib g++-4.5-multilib
+  sleep 5
+fi
 
 echo -e "${cya}Create the BIN folder{$txtrst}"
 echo " "
@@ -83,17 +86,15 @@ echo -e "${cya}Do you want to sync now? (y/n)${txtrst}"
 read SYNC
 
 	if  [ $SYNC  ==  y ] ; then
-	
 		echo -e "${red}Running repo sync${txtrst}"
 		repo sync -j4
-		sleep 5
-		
-	elif [ $SYNC  ==  n ] ; then
+		sleep 5	
+	else
 		echo -e "${red} Not syncing now${txtrst}"
 		sleep 2
-		
+
 	fi
-	
+
 echo -e "${cya} use './build.sh' to sync and compile${txtrst}"
 cd ~/cyandream/system
 
